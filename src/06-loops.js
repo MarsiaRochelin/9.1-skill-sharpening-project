@@ -164,7 +164,12 @@ return accumulator
  *  //> -1
  */
 function firstIndexFound(array, target) {
-  
+ for (let i = 0; i < array.length; i++){
+  if (array[i] === target) {
+    return i
+  }
+ } 
+ return -1
 }
 
 /**
@@ -185,7 +190,14 @@ function firstIndexFound(array, target) {
  *  lastIndexFound([ "left", "right", "left" ], "up");
  *  //> -1
  */
-function lastIndexFound(array, target) {}
+function lastIndexFound(array, target) {
+  for (let i = array.length; i >= 0; i--){
+    if (array[i] === target){
+      return i
+    }
+   } 
+   return -1
+}
 
 /**
  * timesIndex()
@@ -199,7 +211,13 @@ function lastIndexFound(array, target) {}
  *  //> [ 7 * 0, 10 * 1, 11 * 2 ]
  *  //> [ 0, 10, 22 ]
  */
-function timesIndex(array) {}
+function timesIndex(array) {
+  let array1 = []
+  for (let num = 0; num < array.length; num++){
+    array1.push(array[num] * num)
+  }
+  return array1
+}
 
 /**
  * cumulativeSum()
@@ -213,7 +231,15 @@ function timesIndex(array) {}
  *  //> [ 5, 5 + 2, 5 + 2 + 9 ]
  *  //> [ 5, 7, 16 ]
  */
-function cumulativeSum(array) {}
+function cumulativeSum(array) {
+  let sum = 0
+  let array1 = []
+  for (let i = 0; i < array.length; i++){
+    sum = sum + array[i]
+    array1.push(sum)
+  }
+return array1
+}
 
 // Do not change anything below this line.
 module.exports = {
