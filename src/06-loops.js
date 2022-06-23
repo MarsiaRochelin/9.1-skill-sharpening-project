@@ -12,8 +12,14 @@
  *  (3 + 4 + 5 + 6 + 7 = 25)
  */
 function rangeSum(min, max) {
-  
-}
+  let sum = 0
+  for (let i = min; i <= max; i++){
+    sum += i
+  } 
+    return sum
+  }
+
+
 
 /**
  * rangeOdd()
@@ -27,7 +33,15 @@ function rangeSum(min, max) {
  *  rangeOdd(10, 15);
  *  //> [ 15, 13, 11 ]
  */
-function rangeOdd(min, max) {}
+function rangeOdd(min, max) {
+  let difference = []
+  for (let i = max; i >= min; i--){
+     if (i % 2 === 1){
+      difference.push(i)
+     }
+  }
+  return difference
+}
 
 /**
  * rangeEveryOther()
@@ -41,7 +55,13 @@ function rangeOdd(min, max) {}
  *  rangeEveryOther(11, 18);
  *  //> [ 11, 13, 15, 17 ]
  */
-function rangeEveryOther(min, max) {}
+function rangeEveryOther(min, max) {
+  let arr = []
+  for (let i = min; i <= max; i +=2){
+    arr.push(i)
+  }
+  return arr
+}
 
 /**
  * containsWhileLoop()
@@ -63,7 +83,16 @@ function rangeEveryOther(min, max) {}
  *  containsWhileLoop([ "left", "up", "right" ], "down");
  *  //> false
  */
-function containsWhileLoop(array, target) {}
+function containsWhileLoop(array, target) {
+ let x = 0
+  while (x < array.length){
+    if(array[x] === target){
+      return true
+    }
+    x++
+  }
+  return false
+}
 
 /**
  * containsForLoop()
@@ -85,7 +114,14 @@ function containsWhileLoop(array, target) {}
  *  containsForLoop([ "left", "up", "right" ], "down");
  *  //> false
  */
-function containsForLoop(array, target) {}
+function containsForLoop(array, target) {
+  for(blank of array){
+    if(blank === target){
+     return true 
+    }
+  }
+  return false
+}
 
 /**
  * targetCount()
@@ -99,7 +135,15 @@ function containsForLoop(array, target) {}
  *  targetCount([ 10, 20, 10, 20, 30 ], 10);
  *  //> 2
  */
-function targetCount(array, target) {}
+function targetCount(array, target) {
+ let accumulator = 0
+  for(val of array){
+    if (val === target){
+      accumulator++
+    }
+  }
+return accumulator
+}
 
 /**
  * firstIndexFound()
@@ -119,7 +163,9 @@ function targetCount(array, target) {}
  *  firstIndexFound([ "left", "right", "left" ], "up");
  *  //> -1
  */
-function firstIndexFound(array, target) {}
+function firstIndexFound(array, target) {
+  
+}
 
 /**
  * lastIndexFound()
