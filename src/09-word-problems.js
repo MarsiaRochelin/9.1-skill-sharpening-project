@@ -50,7 +50,12 @@ function applyDiscount(priceInCents, age, hasMembership) {
  *  //> "$30.00"
  */
 function getCartTotal(products) {
-  
+  console.log(products)
+  let total = 0
+  for(let i = 0; i < products.length; i++ ){
+      total += products[i].priceInCents * products[i].quantity 
+  }
+  return `$${(total  / 100).toFixed(2)}`
 }
 
 /**
@@ -91,7 +96,17 @@ function getCartTotal(products) {
     compareLocations(address1, address2);
     //> "Same city."
  */
-function compareLocations(address1, address2) {}
+function compareLocations(address1, address2) {
+if (address1.street  === address2.street && address1.city  === address2.city && address1.state  === address2.state && address1.zip  === address2.zip){
+  return  "Same building."
+} else if(address1.city  === address2.city && address1.state  === address2.state && address1.zip  === address2.zip){
+  return "Same city."
+} else if( address1.state  === address2.state){
+  return "Same state."
+} else {
+  return "Addresses are not near each other."
+}
+}
 
 /**
  * gradeAssignments()
@@ -138,7 +153,27 @@ function compareLocations(address1, address2) {}
     //>   },
     //> ];
  */
-function gradeAssignments(assignments) {}
+function gradeAssignments(assignments){
+  for(let i = 0; i < assignments.length; i++){
+    if(assignments[i].kind === "PASS-FAIL") {
+      if(assignments[i].score.received === assignments[i].score.max){
+        assignments[i].status = "PASSED"
+      } else{
+        assignments[i].status = "FAILED"
+      }
+    } else if(assignments[i].kind === "PERCENTAGE"){
+      let scorePer = (assignments[i].score.received/assignments[i].score.max) * 100
+        if(scorePer >= 80){
+        assignments[i].status = `PASSED: ${scorePer.toFixed(1)}%`
+        } else {
+          assignments[i].status = `FAILED: ${scorePer.toFixed(1)}%`
+        }
+    } else{
+      assignments[i].status = `SCORE: ${assignments[i].score.received}/${assignments[i].score.max}`
+    }
+  } 
+ return assignments
+} 
 
 /**
  * createLineOrder()
@@ -163,7 +198,18 @@ function gradeAssignments(assignments) {}
     createLineOrder(people);
     //> [ "Ray Anderson", "America Marsh", "Wade Carson", "Patience Patel" ]
  */
-function createLineOrder(people) {}
+function createLineOrder(people) {
+  let priority =[]
+  let nonPriority =[]
+  for(let i = 0; i < people.length; i++){
+    if(people[i].hasMembership === true){
+      priority.push(people[i].name)
+    } else {
+      nonPriority.push(people[i].name)
+    }
+  }
+  return priority.concat(nonPriority)
+}
 
 module.exports = {
   applyDiscount,
